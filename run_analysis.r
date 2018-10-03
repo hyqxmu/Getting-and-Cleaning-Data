@@ -33,7 +33,7 @@ all_data_3 <- melt(all_data_2, id = c("subject", "activity"))
 all_data_4 <- dcast(all_data_3, subject + activity ~ variable, mean)
 
 #Save the tidy_data.txt file
-write.table(all_data_4, file = "tidy_data.txt", sep = '\t')
+write.table(all_data_4, file = "tidy_data.txt",row.name=FALSE, sep = '\t')
 
 
          
