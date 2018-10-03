@@ -1,5 +1,6 @@
 rm(list=ls())
 setwd("~/Documents/Getting and tidy data/Peer_Review_Getting and Cleaning Data/UCI HAR Dataset")
+
 #Merge the training and the test sets to create one date set
 subject_train <- read.table("./train/subject_train.txt")
 x_train <- read.table("./train/X_train.txt")
@@ -30,5 +31,9 @@ all_data_2$activity <- mgsub(all_data_2$activity, 1:6, activity_labels[,2])
 library(reshape2)
 all_data_3 <- melt(all_data_2, id = c("subject", "activity"))
 all_data_4 <- dcast(all_data_3, subject + activity ~ variable, mean)
-head(all_data_4)
+
+#Save the tidy_data.txt file
 write.table(all_data_4, file = "tidy_data.txt", sep = '\t')
+
+
+         
